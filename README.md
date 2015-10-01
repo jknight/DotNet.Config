@@ -18,16 +18,18 @@ DotNet.Config is a small but powerful configuration library for .NET.
 You can start using DotNet.Config with one line of code:
 
 -- config.properties --
+<code>
 size=12
 dateTime=1/12/2014
 name=Terry Tester
 color=Blue
 quote=Today is $dateTime and the sky is
     bright $color.
-
+</code>
 -- /config.properties --
 
 -- MyClass.cs --
+<code>
 public class MyClass {
 
   public enum Color { Red, Blue, Green };
@@ -56,6 +58,7 @@ public class MyClass {
   }
 
 }
+</code>
 -- /MyClass.cs --
 
 
