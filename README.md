@@ -26,48 +26,47 @@ Start using DotNet.Config with one line of code.
 2. Add to the top of your class: using DotNet.Config;
 3. Create a config.properties file (properties->copy to outputdirectory) like this::
 
-````dosini
-size=12
-dateTime=1/12/2014
-name=Terry Tester
-color=Blue
-quote=Today is $dateTime and the sky is
-    bright $color.
-````
-
+  ````dosini
+  size=12
+  dateTime=1/12/2014
+  name=Terry Tester
+  color=Blue
+  quote=Today is $dateTime and the sky is
+      bright $color.
+  ````
 4. And you're ready to go:
 
-````csharp
-using DotNet.Config;
-public class MyClass {
-
-  public enum Color { Red, Blue, Green };
-
-  #region Glue-on properties
-  //DotNet.Config will glue values from your config.properties directly onto your member variables:
-  private int size; //casts non-string values 
-  private DateTime dateTime;
-  private string name;
-  private string _quote; //supports private variables prefixed with an underscore
-  private Color color; //supports enums
-  #endregion
-
-  public MyClass() {
-
-    //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
-    **AppSettings.GlueOnto(this);**
-
-    /*
-    this.size == 12
-    this.name == "Terry Tester"
-    this.color == Color.Blue
-    etc
-    */
-
+  ````csharp
+  using DotNet.Config;
+  public class MyClass {
+  
+    public enum Color { Red, Blue, Green };
+  
+    #region Glue-on properties
+    //DotNet.Config will glue values from your config.properties directly onto your member variables:
+    private int size; //casts non-string values 
+    private DateTime dateTime;
+    private string name;
+    private string _quote; //supports private variables prefixed with an underscore
+    private Color color; //supports enums
+    #endregion
+  
+    public MyClass() {
+  
+      //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
+      **AppSettings.GlueOnto(this);**
+  
+      /*
+      this.size == 12
+      this.name == "Terry Tester"
+      this.color == Color.Blue
+      etc
+      */
+  
+    }
   }
-}
-````
-
+  ````
+  
 
 ## History 
 
