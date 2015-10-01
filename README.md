@@ -19,7 +19,7 @@ You can start using DotNet.Config with one line of code.
 
 If you have a config.properties file like this:
 
-````csharp
+````dosini
 size=12
 dateTime=1/12/2014
 name=Terry Tester
