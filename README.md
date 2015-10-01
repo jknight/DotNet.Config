@@ -23,8 +23,8 @@ For developers, it has the power to 'glue' configuration settings directly onto 
 Start using DotNet.Config with one line of code.
 
 1. Add a reference to DotNet.Config
-2. Add to the top of your class: using DotNet.Config;
-3. Create a config.properties file (properties->copy to outputdirectory) like this::
+2. Add "using DotNet.Config;" to your class imports
+3. Create a config.properties file (properties->copy to outputdirectory) like this:
 
   ````dosini
   size=12
