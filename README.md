@@ -39,6 +39,15 @@ Start using DotNet.Config with one line of code.
   templateFile=$PATH\myTemplate.xml
   quote=Today is $dateTime and the sky is
       bright $color.
+
+  items.A=hello list
+  items.B=guten tag list
+  items.C=bonjour list
+
+  numbers.X=10
+  numbers.Y=20
+  numbers.Z=30
+
   ````
 4. And you're ready to go:
 
@@ -59,6 +68,8 @@ Start using DotNet.Config with one line of code.
     //also supports private variables prefixed with an underscore:
     private string _quote; 
     private Color color; //supports enums
+    private List<string> items; //supports lists of strings
+    private List<int> numbers; //supports lists of numbers 
     #endregion
   
     public MyClass() {
@@ -70,7 +81,9 @@ Start using DotNet.Config with one line of code.
       this.size == 12
       this.name == "Terry Tester"
       this.color == Color.Blue
-      etc
+      
+      this.items is a list of 3 strings
+      this.numbers is a list of 3 integers 
       */
   
     }
