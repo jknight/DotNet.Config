@@ -14,7 +14,9 @@ It uses a transparent convention over configuration approach: if your class has 
 
 ## Why?
 
-.NET already has a [configuration system](https://msdn.microsoft.com/en-us/library/system.configuration.configurationmanager.aspx), so what's the point of this? This library makes life easier and fills some gaps:
+.NET already has a [configuration system](https://msdn.microsoft.com/en-us/library/system.configuration.configurationmanager.aspx), so what's the point of this? 
+
+This library makes your code cleaner, your life easier, and fills some gaps:
 * No Xml configuration. Xml baffles non-technical users who struggle to find which settings need to be updated. In addition, settings in Xml need to be HTML encoded.
 Have a setting with >, <, & in them? Someone is guaranteed to botch it. Have a long multi-line string setting? No fun with web/app.config. 
 * Working with System.Configuration is tedious and verbose. DotNet.Config, but contrast, is nearly invisible and automatically applies all your settings.
