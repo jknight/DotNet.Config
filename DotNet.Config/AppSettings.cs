@@ -11,7 +11,7 @@ namespace DotNet.Config
     /// <summary>
     /// This class uses a java style .properties file to load, apply ('glue'), and save settings. 
     /// 
-    /// I've found this approach and helper class is vastly easier than using app.config for several reasons:
+    /// I've found this approach and helper class is far easier than using app.config for several reasons:
     /// 
     /// 1) Non-technical folks have no problem editing .ini "name=value" style files, but they struggle with XML
     /// 2) Values with quotes in xml are a headache - you have to use '&quot;' which gets messy
@@ -66,6 +66,7 @@ namespace DotNet.Config
             }
         }
 
+        
         private static Dictionary<string, string> _Retrieve(string configFile)
         {
             //NOTE that if we need to use different config files at once this will need to be updated to 
@@ -106,7 +107,9 @@ namespace DotNet.Config
                     v = line.Substring(line.IndexOf('=') + 1);
 
                     //allow for comments on the same line following the value like name=value #this is a comment
-                    v = Regex.Replace(v, @"\s+#.*$", "");
+                    //2015-10-01: don't allow comments on the same line because it interferes with 
+                    //cases like colors.one = #FF0000;
+                    //v = Regex.Replace(v, @"\s+#.*$", "");
                 }
                 else if (n != null && v != null && Regex.IsMatch(line, @"^\s{4,}[^ ]")/*multi-liners must indent at least 4 spaces*/)
                 {
@@ -194,6 +197,12 @@ namespace DotNet.Config
                     name = "_" + name; // try the _variable naming convention
                     fieldInfo = o.GetType().GetField(name, flags);
                 }
+                if(fieldInfo == null && name.Contains("."))
+                {
+                    //might be a list
+                    string listName = pair.Key.Split('.')[0];
+                    fieldInfo = o.GetType().GetField(listName, flags);
+                }
 
                 if (fieldInfo == null)
                 {
@@ -221,6 +230,27 @@ namespace DotNet.Config
                     fieldInfo.SetValue(o, Enum.Parse(ft, value));
                 else if (ft.FullName == "System.DateTime")
                     fieldInfo.SetValue(o, DateTime.Parse(value));
+                else if (ft.FullName.StartsWith("System.Collections.Generic.List"))
+                {
+                    if (fieldInfo.GetValue(o) == null)
+                    {
+                        object fieldInstance = Activator.CreateInstance(ft);
+                        object newType = Convert.ChangeType(fieldInstance, fieldInfo.FieldType);
+                        fieldInfo.SetValue(o, newType);
+                    }
+                    var field = fieldInfo.GetValue(o);
+                    var genericListType = fieldInfo.FieldType.UnderlyingSystemType.GenericTypeArguments[0].UnderlyingSystemType;
+                    
+                    object castValue;
+                    //support for lists of enums (TODO: I think we can do this w/o the Enum parse)
+                    if (genericListType.BaseType == typeof(Enum))
+                        castValue = Enum.Parse(genericListType, value);
+                    else 
+                        castValue = Convert.ChangeType(value, genericListType);
+
+                    var addMethod = fieldInfo.FieldType.GetMethod("Add");
+                    addMethod.Invoke(field, new object[] { castValue });
+                }
                 else
                     fieldInfo.SetValue(o, value);
 
@@ -276,6 +306,7 @@ namespace DotNet.Config
             string path = Uri.UnescapeDataString(uri.Path);
             return Path.GetDirectoryName(path);
         }
+
 
     }
 }

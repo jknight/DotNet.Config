@@ -11,8 +11,10 @@ namespace DotNet.Config
     [TestFixture]
     public class TestAppSettings
     {
+        public enum Size { small, medium, large };
+
+        private string _test0;
         private string test1;
-        private string _test1;
         private string test2;
         private string test3;
         private string test4;
@@ -21,6 +23,10 @@ namespace DotNet.Config
         private string test7;
         private int test8;
         private DateTime test9;
+        private Size size; 
+        private List<string> colors;
+        private List<int> numbers;
+        private List<Size> sizes;
 
         [SetUp]
         public void Setup()
@@ -37,7 +43,7 @@ namespace DotNet.Config
         [Test]
         public void TestUnderscore()
         {
-            Assert.AreEqual(_test1, "someValue");
+            Assert.AreEqual(_test0, "test underscores");
         }
 
         [Test]
@@ -94,5 +100,36 @@ namespace DotNet.Config
             Assert.AreEqual(AppSettings.CacheCount, 1);
         }
 
+        [Test]
+        public void Test_Enum()
+        {
+            Assert.AreEqual(this.size, Size.medium);
+        }
+
+        [Test]
+        public void Test_List_of_Strings()
+        {
+            string[] expected = new string[] { "#FF0000;", "#00FF00;", "#0000FF;" };
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(this.colors.ElementAt(i), expected[i]);
+        }
+
+        [Test]
+        public void Test_List_of_Integers()
+        {
+            int[] expected = new int[] { 10, 20, 30, 40 };
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(this.numbers.ElementAt(i), expected[i]);
+        }
+
+        //TODO: only native types are supported - this does not work yet
+        [Test]
+        [ExpectedException(typeof(InvalidCastException))]
+        public void Test_List_of_Enums() 
+        {
+            Size[] expected = new Size[] { Size.small, Size.medium, Size.large };
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(this.sizes.ElementAt(i), expected[i]);
+        }
     }
 }
