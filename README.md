@@ -29,6 +29,7 @@ Start using DotNet.Config with one line of code.
 3. Create a config.properties file (properties->copy to outputdirectory) like this:
 
   ````dosini
+  # Lines starting with a # are comments and will be ignored
   size=12
   dateTime=1/12/2014
   name=Terry Tester
