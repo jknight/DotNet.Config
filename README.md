@@ -21,6 +21,7 @@ It uses a transparent convention over configuration approach: if your class has 
 * **Variable substition**: baked in support for variable substitution in your config files. 
 * **Flexible**: Full support of multi-line configuration settings
 * **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. It will even casting of int / enum /datetime datatypes!
+* **Strong Typing**: It will automatically cast ints, strings, dates, enums. You can also configure generic lists - see the example below
 
 ## Usage
 
