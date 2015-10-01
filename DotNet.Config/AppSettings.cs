@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using log4net;
+//using log4net;
 
 namespace DotNet.Config
 {
@@ -34,7 +34,7 @@ namespace DotNet.Config
         private static string defaultConfigFileFullPath = Path.Combine(GetAssemblyDirectory(), defaultConfigFileName);
 
         private static Dictionary<string, string> appSettings;
-        private static ILog log = LogManager.GetLogger(typeof(AppSettings));
+        //private static ILog log = LogManager.GetLogger(typeof(AppSettings));
 
         //used for unit testing to confirm we only do the work once
         public static int CacheCount = 0;
@@ -61,8 +61,8 @@ namespace DotNet.Config
             }
             catch (ArgumentException ex)
             {
-                log.Error("Key already exists: check " + configFile + " for duplicate settings. You may have accidentally commented/uncommented one so it appears twice");
-                throw;
+                string message = "Key already exists: check " + configFile + " for duplicate settings. You may have accidentally commented/uncommented one so it appears twice";
+                throw new ArgumentException(message);
             }
         }
 
@@ -81,7 +81,7 @@ namespace DotNet.Config
                 if (!File.Exists(configFile))
                 {
                     string message = "> Failed to locate config file " + configFile;
-                    log.Error(message);
+                    //log.Error(message);
                     throw new FileNotFoundException(message);
                 }
             }
@@ -224,7 +224,7 @@ namespace DotNet.Config
                 else
                     fieldInfo.SetValue(o, value);
 
-                log.Info("> " + name + "=" + value);
+                //log.Info("> " + name + "=" + value);
             }
 
         }
@@ -243,7 +243,7 @@ namespace DotNet.Config
             if (!File.Exists(defaultConfigFileFullPath))
             {
                 string message = "AppsettingSave - Failed to find config file using full assembly path '" + defaultConfigFileFullPath + "'";
-                log.Error(message);
+                //log.Error(message);
                 throw new FileNotFoundException(message);
             }
 
@@ -262,15 +262,9 @@ namespace DotNet.Config
 
             if (wasUpdated)
             {
-                try
-                {
-                    log.Info("trying to commit config file:" + lines);
-                    File.WriteAllLines(defaultConfigFileFullPath, lines);
-                }
-                catch (Exception ex)
-                {
-                    log.Info("could not save config file." + ex);
-                }
+                //log.Info("trying to commit config file:" + lines);
+                File.WriteAllLines(defaultConfigFileFullPath, lines);
+               
             }
         }
 
