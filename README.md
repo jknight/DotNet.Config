@@ -10,7 +10,7 @@ This library provides a simple way to manage configuration settings in a name/va
 It uses a transparent convention over configuration approach: if your class has a member variable that matches the name of a setting, it will automatically apply the value to your class.
 
 * **For developers**: 'Glue' configuration settings directly onto your classes based on the convention of member variables in classes matching the names of configuration settings.
-* **For sys admins and non-technical end users**: configuration settings are a breeze to edit in a simple ini-format text file. No more calls over botched app/web.config files. 
+* **For users of your application**: configuration settings are a breeze to edit in a simple ini-format text file. No more calls over botched app/web.config files. 
 
 ## Features
 
