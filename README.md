@@ -2,7 +2,7 @@
 
 ## About 
 
-DotNet.Config is a small and powerful configuration library for .NET.  
+DotNet.Config is a small and powerful configuration library for .NET originally inspired by Java's config.properties. 
 
 If you're looking for a quick and painless way to put your configuration settings in a simple name/value formate text file,
 and load them up easily, then this is for you.
