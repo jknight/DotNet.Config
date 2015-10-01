@@ -12,6 +12,14 @@ It uses a transparent convention over configuration approach: if your class has 
 * **For developers**: 'Glue' configuration settings directly onto your classes based on the convention of member variables in classes matching the names of configuration settings.
 * **For your users**: Configuration settings are a breeze to edit in a simple .properties text file. No more calls over botched app/web.config files. 
 
+## Why?
+
+.NET already has a [configuration system](https://msdn.microsoft.com/en-us/library/system.configuration.configurationmanager.aspx), so what's the point of this? This library makes life easier and fills some gaps:
+* No Xml configuration. Xml baffles non-technical users who struggle to find which settings need to be updated. In addition, settings in Xml need to be HTML encoded.
+Have a password with >, <, & in them? Someone is guaranteed to botch it
+* Working with System.Configuration is tedious and verbose. DotNet.Config, but contrast, is nearly invisible and automatically applies all your settings.
+* System.Configuration is a notorious headache if you want to ship a dll with its own configuration file. This is a non-issue with DotNet.Config
+
 ## Features
 
 * **Easy to add**: add a reference, create a new config.properties file, and with one line of code your class already has access to config settings.
