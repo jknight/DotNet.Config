@@ -2,7 +2,10 @@
 
 ## About 
 
-DotNet.Config is a small but powerful configuration library for .NET. 
+DotNet.Config is a small and powerful configuration library for .NET. 
+It uses text-based configuration files that are simple and easy to edit for non-technical users.
+But for developers, it has the power to simply 'glue' configuration settings directly onto your classes 
+using reflection, based on the convention of member variables in classes matching the names of configuration settings.
 
 ## Features
 
@@ -15,9 +18,9 @@ DotNet.Config is a small but powerful configuration library for .NET.
 
 ## Usage
 
-You can start using DotNet.Config with one line of code.
+Start using DotNet.Config with one line of code.
 
-If you have a config.properties file like this:
+Create a config.properties file like this:
 
 ````dosini
 size=12
@@ -28,7 +31,7 @@ quote=Today is $dateTime and the sky is
     bright $color.
 ````
 
-then you can use AppSettings.GlueOnto(this) to apply the settings:
+and you can immeditaly glue your settings onto your class with "AppSettings.GlueOnto(this)":
 
 ````csharp
 public class MyClass {
@@ -62,5 +65,8 @@ public class MyClass {
 
 
 ## History 
+
+This code started out of a need to include a simple configuration system with Dll's written as a third party.
+Over time, it evolved into a light weight configuration system that simply "glue" properties onto classes.
 
 
