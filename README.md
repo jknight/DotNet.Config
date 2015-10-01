@@ -6,7 +6,7 @@
 
 DotNet.Config is a small but powerful configuration library for .NET originally inspired by [Java's .properties files](https://commons.apache.org/proper/commons-configuration/userguide/howto_properties.html).
 
-This library provides a simple way to manage configuration settings in a name/value format text file. It applies configuration settings directly onto your class member variables..
+This library provides a simple way to manage configuration settings in a name/value format text file. It includes a loader that applies configuration settings directly onto your class member variables.
 It uses a transparent convention over configuration approach: if your class has a member variable that matches the name of a setting, it will automatically apply the value to your class.
 
 * **For developers**: 'Glue' configuration settings directly onto your classes based on the convention of member variables in classes matching the names of configuration settings.
