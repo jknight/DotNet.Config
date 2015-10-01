@@ -1,6 +1,6 @@
 # DotNet.Config
 
-![DotNet.Config](DotNetConfig.png "DotNet.Config")
+![DotNet.Config]("https://raw.githubusercontent.com/jknight/DotNet.Config/master/DotNet.Config.png", "DotNet.Config")
 
 ## About 
 
