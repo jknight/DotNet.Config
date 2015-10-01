@@ -32,7 +32,7 @@ Have a setting with >, <, & in them? Someone is guaranteed to botch it. Have a l
 * **Flexible**: Full support of multi-line configuration settings
 * **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. 
 * **Strong Typing**: It will automatically cast to your ints, strings, dates, enums. You can also load directly into generic lists - see the example below
-* **Unit Tested**: Includes a [unit tests](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/UnitTests/TestAppSettings.cs) for [all configuration scenarios](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/config.properties).
+* **Unit Tested**: Includes [unit tests](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/UnitTests/TestAppSettings.cs) for [all configuration scenarios](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/config.properties).
 
 ## Usage
 
