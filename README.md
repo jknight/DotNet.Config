@@ -18,47 +18,44 @@ DotNet.Config is a small but powerful configuration library for .NET.
 You can start using DotNet.Config with one line of code:
 
 -- config.properties --
-<code>
-size=12
-dateTime=1/12/2014
-name=Terry Tester
-color=Blue
-quote=Today is $dateTime and the sky is
-    bright $color.
-</code>
+    size=12
+    dateTime=1/12/2014
+    name=Terry Tester
+    color=Blue
+    quote=Today is $dateTime and the sky is
+        bright $color.
 -- /config.properties --
 
 -- MyClass.cs --
-<code>
-public class MyClass {
-
-  public enum Color { Red, Blue, Green };
-
-  #region Glue-on properties
-  //DotNet.Config will glue values from your config.properties directly onto your member variables:
-  private int size; //casts non-string values 
-  private DateTime dateTime;
-  private string name;
-  private string _quote; //supports private variables prefixed with an underscore
-  private Color color; //supports enums
-  #endregion
-
-  public MyClass() {
-
-    //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
-    AppSettings.GlueOnto(this);
-
-    /*
-    this.size == 12
-    this.name == "Terry Tester"
-    this.color == Color.Blue
-    etc
-    */
-
-  }
-
-}
-</code>
+    public class MyClass {
+    
+      public enum Color { Red, Blue, Green };
+    
+      #region Glue-on properties
+      //DotNet.Config will glue values from your config.properties directly onto your member variables:
+      private int size; //casts non-string values 
+      private DateTime dateTime;
+      private string name;
+      private string _quote; //supports private variables prefixed with an underscore
+      private Color color; //supports enums
+      #endregion
+    
+      public MyClass() {
+    
+        //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
+        AppSettings.GlueOnto(this);
+    
+        /*
+        this.size == 12
+        this.name == "Terry Tester"
+        this.color == Color.Blue
+        etc
+        */
+    
+      }
+    
+    }
+    
 -- /MyClass.cs --
 
 
