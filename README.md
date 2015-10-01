@@ -1,5 +1,7 @@
 # DotNet.Config
 
+![DotNet.Config](DotNetConfig.png "DotNet.Config")
+
 ## About 
 
 DotNet.Config is a small and powerful configuration library for .NET originally inspired by Java's config.properties. 
