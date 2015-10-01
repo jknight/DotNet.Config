@@ -61,7 +61,7 @@ namespace DotNet.Config
         [Test]
         public void Test_Variable_Substitution()
         {
-            Assert.AreEqual(test5, "hello someValue");
+            Assert.AreEqual(test5, "Hello someValue");
         }
 
 
@@ -69,7 +69,7 @@ namespace DotNet.Config
         public void Test_Multi_Line_String()
         {
             //multiline strings in the config are set as single line values (breaks removed)
-            Assert.AreEqual(test7, "Select a,b,c,d from tableA as A  join tableB as B on A.foo = B.foo where something=something" );
+            Assert.AreEqual(test7, "Select a,b,c,d from tableA as A  join tableB as B on A.foo = B.foo where something > 'something' and \"oh look some quotes and an ampersand &\"" );
         }
 
         [Test]
@@ -125,9 +125,7 @@ namespace DotNet.Config
                 Assert.AreEqual(this.numbers.ElementAt(i), expected[i]);
         }
 
-        //TODO: only native types are supported - this does not work yet
         [Test]
-        [ExpectedException(typeof(InvalidCastException))]
         public void Test_List_of_Enums() 
         {
             Size[] expected = new Size[] { Size.small, Size.medium, Size.large };
