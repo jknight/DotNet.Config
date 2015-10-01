@@ -22,6 +22,7 @@ It uses a transparent convention over configuration approach: if your class has 
 * **Flexible**: Full support of multi-line configuration settings
 * **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. It will even casting of int / enum /datetime datatypes!
 * **Strong Typing**: It will automatically cast ints, strings, dates, enums. You can also configure generic lists - see the example below
+* **Unit Tested**: Includes a suite of unit tests for configuration scenarios
 
 ## Usage
 
