@@ -18,7 +18,7 @@ namespace DotNet.Config
         private string test2;
         private string test3;
         private string test4;
-        private string test5;
+        public string test5; //public or private - both work
         private string test6;
         private string test7;
         private int test8;
@@ -64,11 +64,6 @@ namespace DotNet.Config
             Assert.AreEqual(test5, "hello someValue");
         }
 
-        [Test]
-        public void Test_Same_Line_Comments_Removed()
-        {
-            Assert.AreEqual(test6, "Here is a setting");
-        }
 
         [Test]
         public void Test_Multi_Line_String()
@@ -87,6 +82,14 @@ namespace DotNet.Config
         public void Test_Cast_DateTime()
         {
             Assert.AreEqual(new DateTime(2016, 3, 21), test9);
+        }
+
+        [Test]
+        public void Test_Long_String()
+        {
+            Assert.IsTrue(this.test6.StartsWith("What, my young master")
+                            &&
+                          this.test6.EndsWith("Envenoms him that bears it!"));
         }
         
         [Test]
