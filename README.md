@@ -33,6 +33,7 @@ Start using DotNet.Config with one line of code.
   dateTime=1/12/2014
   name=Terry Tester
   color=Blue
+  templateFile=$PATH\myTemplate.xml
   quote=Today is $dateTime and the sky is
       bright $color.
   ````
@@ -49,6 +50,8 @@ Start using DotNet.Config with one line of code.
     //directly onto your member variables:
     private int size; //casts non-string values 
     private DateTime dateTime;
+    //Substitutes $PATH with the value of the directory this component is in.
+    private string templateFile;
     private string name;
     //also supports private variables prefixed with an underscore:
     private string _quote; 
