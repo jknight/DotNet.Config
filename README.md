@@ -2,7 +2,7 @@
 
 ## About 
 
-DotNet.Config is a small and powerful configuration library for .NET. 
+DotNet.Config is a small and powerful configuration library for .NET.  
 
 For sys admins and non-technical end users, configuration settings are a breeze to edit in a simple ini-format text file.
 
@@ -10,12 +10,13 @@ For developers, it has the power to 'glue' configuration settings directly onto 
 
 ## Features
 
-* Easy to use: add a reference, create a new config.properties file, and with one line of code your class already has access to config settings.
-* Simple name/value pair configuration in a text file, making it easy for non-technical users to update settings
-* Config files that can be loaded by any component, whether the main .exe or a dll. No more fighting with .NET if you want to ship a dll with its own configuration.
-* Variable substition in your config files. 
-* Full support of multi-line configuration settings
-* A "glue on" system applies configuration settings directly onto your class, including casting of int,enum,datetime.
+* **Easy to add**: add a reference, create a new config.properties file, and with one line of code your class already has access to config settings.
+* **Hassle free config files**: simple and straight forward text-based config files. No more HTML encoding settings in ugly XML files. 
+* **Load anywhere**: configuration settings can be loaded by any component, whether the main .exe or a dll. No more fighting with .NET if you want to ship a dll with its own configuration.
+* **Inspired by Java**: config.properties files are inspired by Java's simple text-based config files 
+* **Variable substition**: baked in support for variable substitution in your config files. 
+* **Flexible**: Full support of multi-line configuration settings
+* **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. It will even casting of int / enum /datetime datatypes!
 
 ## Usage
 
