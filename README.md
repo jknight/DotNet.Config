@@ -72,7 +72,8 @@ Start using DotNet.Config with one line of code.
 
 ## History 
 
-This code started out of a need to include a simple configuration system with Dll's written as a third party.
+This code grew out of a need to include a simple configuration system with Dll's written as a third party.
+
 Over time, it evolved into a light weight configuration system that simply "glue" properties onto classes.
 
 
