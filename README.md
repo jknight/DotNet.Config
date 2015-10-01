@@ -22,7 +22,9 @@ For developers, it has the power to 'glue' configuration settings directly onto 
 
 Start using DotNet.Config with one line of code.
 
-Create a config.properties file like this:
+1. Add a reference to DotNet.Config
+2. Add to the top of your class: using DotNet.Config;
+3. Create a config.properties file (properties->copy to outputdirectory) like this::
 
 ````dosini
 size=12
@@ -33,9 +35,10 @@ quote=Today is $dateTime and the sky is
     bright $color.
 ````
 
-and you can immeditaly glue your settings onto your class with "AppSettings.GlueOnto(this)":
+4. And you're ready to go:
 
 ````csharp
+using DotNet.Config;
 public class MyClass {
 
   public enum Color { Red, Blue, Green };
@@ -52,7 +55,7 @@ public class MyClass {
   public MyClass() {
 
     //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
-    AppSettings.GlueOnto(this);
+    **AppSettings.GlueOnto(this);**
 
     /*
     this.size == 12
