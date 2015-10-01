@@ -3,9 +3,10 @@
 ## About 
 
 DotNet.Config is a small and powerful configuration library for .NET. 
-It uses text-based configuration files that are simple and easy to edit for non-technical users.
-But for developers, it has the power to simply 'glue' configuration settings directly onto your classes 
-using reflection, based on the convention of member variables in classes matching the names of configuration settings.
+
+For sys admins and non-technical end users, configuration settings are a breeze to edit in a simple ini-format text file.
+
+For developers, it has the power to 'glue' configuration settings directly onto your classes based on the convention of member variables in classes matching the names of configuration settings.
 
 ## Features
 
