@@ -28,9 +28,9 @@ Have a setting with >, <, & in them? Someone is guaranteed to botch it. Have a l
 * **Inspired by Java**: config.properties files are inspired by Java's simple text-based config files 
 * **Variable substition**: baked in support for variable substitution in your config files. 
 * **Flexible**: Full support of multi-line configuration settings
-* **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. It will even casting of int / enum /datetime datatypes!
-* **Strong Typing**: It will automatically cast ints, strings, dates, enums. You can also configure generic lists - see the example below
-* **Unit Tested**: Includes a suite of unit tests for configuration scenarios
+* **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. 
+* **Strong Typing**: It will automatically cast to your ints, strings, dates, enums. You can also load directly into generic lists - see the example below
+* **Unit Tested**: Includes a suite of unit tests for all configuration scenarios
 
 ## Usage
 
