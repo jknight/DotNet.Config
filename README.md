@@ -15,48 +15,50 @@ DotNet.Config is a small but powerful configuration library for .NET.
 
 ## Usage
 
-You can start using DotNet.Config with one line of code:
+You can start using DotNet.Config with one line of code.
 
--- config.properties --
-    size=12
-    dateTime=1/12/2014
-    name=Terry Tester
-    color=Blue
-    quote=Today is $dateTime and the sky is
-        bright $color.
--- /config.properties --
+If you have a config.properties file like this:
 
--- MyClass.cs --
-    public class MyClass {
-    
-      public enum Color { Red, Blue, Green };
-    
-      #region Glue-on properties
-      //DotNet.Config will glue values from your config.properties directly onto your member variables:
-      private int size; //casts non-string values 
-      private DateTime dateTime;
-      private string name;
-      private string _quote; //supports private variables prefixed with an underscore
-      private Color color; //supports enums
-      #endregion
-    
-      public MyClass() {
-    
-        //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
-        AppSettings.GlueOnto(this);
-    
-        /*
-        this.size == 12
-        this.name == "Terry Tester"
-        this.color == Color.Blue
-        etc
-        */
-    
-      }
-    
-    }
-    
--- /MyClass.cs --
+````csharp
+size=12
+dateTime=1/12/2014
+name=Terry Tester
+color=Blue
+quote=Today is $dateTime and the sky is
+    bright $color.
+````
+
+then you can use AppSettings.GlueOnto(this) to apply the settings:
+
+````csharp
+public class MyClass {
+
+  public enum Color { Red, Blue, Green };
+
+  #region Glue-on properties
+  //DotNet.Config will glue values from your config.properties directly onto your member variables:
+  private int size; //casts non-string values 
+  private DateTime dateTime;
+  private string name;
+  private string _quote; //supports private variables prefixed with an underscore
+  private Color color; //supports enums
+  #endregion
+
+  public MyClass() {
+
+    //this tells DotNet.Config to fetch the config.properties file and glue it onto this class
+    AppSettings.GlueOnto(this);
+
+    /*
+    this.size == 12
+    this.name == "Terry Tester"
+    this.color == Color.Blue
+    etc
+    */
+
+  }
+}
+````
 
 
 ## History 
