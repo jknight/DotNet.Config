@@ -12,31 +12,49 @@ namespace DotNet.Config.SampleUsage
         public enum Color { Red, Blue, Green };
 
         #region Glue-on properties
-        private int numberSetting;
-        private string stringSetting;
-        private Color enumSetting;
+        private int myInteger;
+        private string firstName;
+        private Color color;
         private DateTime dateTimeSetting;
+        private List<string> myList;
+        private List<int> sizes;
         #endregion
 
         static void Main(string[] args)
         {
-            //you can get settings explicitly:
-           Console.WriteLine(AppSettings.Retrieve("config.properties")["stringSetting"]);
+            //you can get settings explicitly  without "glueing" them on.
+            //This is useful in a static context.
 
-           new Program().Init();
+            string firstName = AppSettings.Retrieve("config.properties")["firstName"];
+            Console.WriteLine("Seting loaded from explicit config file name: " + firstName);
+
+            //Or assuming the default "config.properties":
+            string firstName2 = AppSettings.Retrieve()["firstName"];
+            Console.WriteLine("Setting loaded from default config file:" + firstName2);
+
+            new Program().Init();
 
             Console.ReadLine();
         }
 
         public void Init()
         {
-            //or use a shorthand to glue them on:
-            AppSettings.GlueOnto(this);
+            //or use a convention-over-configuration shorthand to glue them on:
+            AppSettings.GlueOnto(this); //<-- That's it !`
 
-            Console.WriteLine("numberSetting:" + numberSetting);
-            Console.WriteLine("stringSetting:" + stringSetting);
-            Console.WriteLine("enumSetting:" + enumSetting);
-            Console.WriteLine("dateTimeSetting:" + dateTimeSetting);
+            Console.WriteLine("myInteger:" + this.myInteger);
+            Console.WriteLine("firstName:" + this.firstName);
+            Console.WriteLine("color:" + this.color.ToString());
+            Console.WriteLine("dateTimeSetting:" + this.dateTimeSetting);
+
+            Console.WriteLine("A list of strings:");
+            for(int i = 0; i < this.myList.Count; i++)
+                Console.WriteLine(i + ") " + this.myList.ElementAt(i));
+
+            Console.WriteLine("A list of integers:");
+            for(int i = 0; i < this.sizes.Count; i++)
+                Console.WriteLine(i + ") " + this.sizes.ElementAt(i));
+
         }
     }
 }

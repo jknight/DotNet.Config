@@ -260,9 +260,7 @@ namespace DotNet.Config
         }
 
         /// <summary>
-        /// This Save() method will only commit updates to items in the config (name=value) that already exist.
-        /// If you call it with Save("Some_New_CultureInfo", "Some_New_Value"), it will NOT add a key that doesn't exist.
-        /// So make sure your config file already has the settings that you want to save (update)
+        /// NOT WELL TESTED.
         /// </summary>
         public static void Save(String name, String value)
         {
