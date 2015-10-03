@@ -45,6 +45,8 @@ Start using DotNet.Config with one line of code.
 
   ````dosini
   # Lines starting with a # are comments and will be ignored
+
+  # DotNet.Config will cast settings to match member variable types 
   size=12
   dateTime=1/12/2014
   name=Terry Tester
@@ -53,6 +55,7 @@ Start using DotNet.Config with one line of code.
   quote=Today is $dateTime and the sky is
       bright $color.
 
+  # You can also load groups of setting directly into strongly typed lists
   items.A=hello list
   items.B=guten tag list
   items.C=bonjour list
