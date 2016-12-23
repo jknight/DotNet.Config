@@ -66,7 +66,6 @@ namespace DotNet.Config
             }
         }
 
-        
         private static Dictionary<string, string> _Retrieve(string configFile)
         {
             //NOTE that if we need to use different config files at once this will need to be updated to 
@@ -88,7 +87,7 @@ namespace DotNet.Config
             }
 
             var lines = File.ReadAllLines(configFile)
-                .Where(line => !String.IsNullOrWhiteSpace(line) && !line.TrimStart().StartsWith("#"))
+                .Where(line => !line.TrimStart().StartsWith("#"))
                 .ToList();
 
             var temp = new Dictionary<string, string>();
@@ -111,7 +110,7 @@ namespace DotNet.Config
                     //cases like colors.one = #FF0000;
                     //v = Regex.Replace(v, @"\s+#.*$", "");
                 }
-                else if (n != null && v != null && Regex.IsMatch(line, @"^\s{4,}[^ ]")/*multi-liners must indent at least 4 spaces*/)
+                else if (n != null && v != null && Regex.IsMatch(line, @"^\s{3,}[^ ]"))//multi-liners must indent at least 3 spaces
                 {
                     /*  a multi-line value like:
                      * name=hello there
@@ -123,7 +122,8 @@ namespace DotNet.Config
                
                 if( (n != null && v != null) && 
                     (i == lines.Count - 1  //we're at the end
-                        || Regex.IsMatch(lines[i+1], nameValueSettingLinePattern) //or the next line marks a new pair
+                        || Regex.IsMatch(lines[i+1], nameValueSettingLinePattern) //or the next line marks a new pair 
+                        || String.IsNullOrWhiteSpace(lines[i+1]) //or the next line is empty 
                     ))
                 {
                     if (!temp.ContainsKey(n))
@@ -228,7 +228,7 @@ namespace DotNet.Config
                     fieldInfo.SetValue(o, Convert.ToBoolean(value));
                 else if (ft.BaseType == typeof(Enum))
                     fieldInfo.SetValue(o, Enum.Parse(ft, value));
-                else if (ft.FullName == "System.DateTime")
+                else if (ft.BaseType == typeof(DateTime))
                     fieldInfo.SetValue(o, DateTime.Parse(value));
                 else if (ft.FullName.StartsWith("System.Collections.Generic.List"))
                 {
@@ -304,7 +304,6 @@ namespace DotNet.Config
             string path = Uri.UnescapeDataString(uri.Path);
             return Path.GetDirectoryName(path);
         }
-
 
     }
 }
