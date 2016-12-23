@@ -24,16 +24,16 @@ Have a setting with >, <, & in them? Someone is guaranteed to botch it. Have a l
 
 ## Features
 
-* **Easy to add**: add a reference, create a new config.properties file, and with one line of code your class already has access to config settings.
+* **Quick and easy**: add a reference, create a new config.properties file, and with one line of code your class already has access to config settings.
+* **Glue settings directly onto member variables**: features a unique "glue on" approach that applies configuration settings directly onto your class. 
 * **Hassle free config files**: simple and straight forward text-based config files. No more HTML encoding settings in ugly XML files. 
 * **Load anywhere**: configuration settings can be loaded by any component, whether the main .exe or a dll. No more fighting with .NET if you want to ship a dll with its own configuration.
 * **Inspired by Java**: config.properties files are inspired by Java's simple text-based config files 
 * **Variable substition**: baked in support for variable substitution in your config files. 
 * **Flexible**: Full support of multi-line configuration settings
-* **Glue it on**: features a unique "glue on" approach that applies configuration settings directly onto your class. 
 * **Strong Typing**: It will automatically cast to your ints, strings, dates, enums. You can also load directly into generic lists - see the example below
 * **Unit Tested**: Includes [unit tests](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/UnitTests/TestAppSettings.cs) for [all configuration scenarios](https://github.com/jknight/DotNet.Config/blob/master/DotNet.Config/config.properties).
-* **No Special Characters**: You can have anything you want in a setting: > < = ' ", ; & ... no more hunting for libraries to HTML encode.
+* **No Special Characters**: You can have anything you want in a setting: > < = ' ", ; & ... no more headaches with htmlencoding characters in configurations 
 
 ## Usage
 
